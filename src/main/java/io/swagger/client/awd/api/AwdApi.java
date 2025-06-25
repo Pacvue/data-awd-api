@@ -52,7 +52,7 @@ public class AwdApi {
     private ApiClient apiClient;
     private Map<String, String> headers;
 
-    public AwdApi() {
+    AwdApi() {
         this(Configuration.getDefaultApiClient());
     }
 
