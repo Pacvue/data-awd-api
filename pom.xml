@@ -115,7 +115,8 @@
                         <configuration>
                             <sources>
                                 <source>
-                                src/main/java</source>
+                                    src/main/java
+                                </source>
                             </sources>
                         </configuration>
                     </execution>
@@ -128,22 +129,10 @@
                         <configuration>
                             <sources>
                                 <source>
-                                src/test/java</source>
+                                    src/test/java
+                                </source>
                             </sources>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -218,6 +207,16 @@
                 <artifactId>threetenbp</artifactId>
                 <version>${threetenbp-version}</version>
             </dependency>
+        <dependency>
+            <groupId>com.amazon.sellingpartnerapi</groupId>
+            <artifactId>sellingpartnerapi-aa-java</artifactId>
+            <version>${sp-aa-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -237,6 +236,19 @@
         <threetenbp-version>1.4.1</threetenbp-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.13.1</junit-version>
+        <sp-aa-java.version>2.0</sp-aa-java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus release</name>
+            <url>https://nexus.pacvue.com/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Nexus snapshot</name>
+            <url>https://nexus.pacvue.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
