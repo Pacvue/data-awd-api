@@ -13,6 +13,9 @@
 
 package io.swagger.client.awd;
 
+import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
+import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
+import com.google.common.util.concurrent.RateLimiter;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.internal.http.HttpMethod;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
@@ -74,6 +77,9 @@ public class ApiClient {
     private JSON json;
 
     private HttpLoggingInterceptor loggingInterceptor;
+    private LWAAuthorizationSigner lwaAuthorizationSigner;
+    private RateLimiter rateLimiter;
+    private RateLimitConfiguration rateLimitConfiguration;
 
     /*
      * Constructor for ApiClient
@@ -1204,4 +1210,21 @@ public class ApiClient {
             throw new AssertionError(e);
         }
     }
+
+    public ApiClient setLWAAuthorizationSigner(LWAAuthorizationSigner lwaAuthorizationSigner) {
+        this.lwaAuthorizationSigner = lwaAuthorizationSigner;
+        return this;
+    }
+
+    public ApiClient setRateLimiter(RateLimitConfiguration rateLimitConfiguration) {
+        if (rateLimitConfiguration != null) {
+            this.rateLimiter = RateLimiter.create(rateLimitConfiguration.getRateLimitPermit());
+            RateLimitInterceptor rateLimiterInterceptor = new RateLimitInterceptor(this.rateLimiter, rateLimitConfiguration);
+            this.httpClient.interceptors().add(rateLimiterInterceptor);
+        }
+
+        return this;
+    }
+
+
 }

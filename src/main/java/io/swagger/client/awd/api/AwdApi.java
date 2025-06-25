@@ -13,6 +13,7 @@
 
 package io.swagger.client.awd.api;
 
+import com.amazon.SellingPartnerAPIAA.*;
 import io.swagger.client.awd.ApiCallback;
 import io.swagger.client.awd.ApiClient;
 import io.swagger.client.awd.ApiException;
@@ -35,6 +36,7 @@ import io.swagger.client.awd.model.InboundOrderReference;
 import io.swagger.client.awd.model.InboundPackages;
 import io.swagger.client.awd.model.InboundShipment;
 import io.swagger.client.awd.model.InventoryListing;
+import org.apache.commons.lang3.StringUtils;
 import org.threeten.bp.OffsetDateTime;
 import io.swagger.client.awd.model.ShipmentLabels;
 import io.swagger.client.awd.model.ShipmentListing;
@@ -1526,4 +1528,68 @@ public class AwdApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+
+
+    public static class Builder {
+        private LWAAuthorizationCredentials lwaAuthorizationCredentials;
+        private String endpoint;
+        private LWAAccessTokenCache lwaAccessTokenCache;
+        private Boolean disableAccessTokenCache = false;
+        private RateLimitConfiguration rateLimitConfiguration;
+
+        public Builder() {
+        }
+
+        public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
+            this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
+            return this;
+        }
+
+        public Builder endpoint(String endpoint) {
+            this.endpoint = endpoint;
+            return this;
+        }
+
+        public Builder lwaAccessTokenCache(LWAAccessTokenCache lwaAccessTokenCache) {
+            this.lwaAccessTokenCache = lwaAccessTokenCache;
+            return this;
+        }
+
+        public Builder disableAccessTokenCache() {
+            this.disableAccessTokenCache = true;
+            return this;
+        }
+
+        public Builder rateLimitConfigurationOnRequests(RateLimitConfiguration rateLimitConfiguration) {
+            this.rateLimitConfiguration = rateLimitConfiguration;
+            return this;
+        }
+
+        public Builder disableRateLimitOnRequests() {
+            this.rateLimitConfiguration = null;
+            return this;
+        }
+
+        public AwdApi build() {
+            if (this.lwaAuthorizationCredentials == null) {
+                throw new RuntimeException("LWAAuthorizationCredentials not set");
+            } else if (StringUtils.isBlank(this.endpoint)) {
+                throw new RuntimeException("Endpoint not set");
+            } else {
+                LWAAuthorizationSigner lwaAuthorizationSigner = null;
+                if (this.disableAccessTokenCache) {
+                    lwaAuthorizationSigner = new LWAAuthorizationSigner(this.lwaAuthorizationCredentials);
+                } else {
+                    if (this.lwaAccessTokenCache == null) {
+                        this.lwaAccessTokenCache = new LWAAccessTokenCacheImpl();
+                    }
+
+                    lwaAuthorizationSigner = new LWAAuthorizationSigner(this.lwaAuthorizationCredentials, this.lwaAccessTokenCache);
+                }
+
+                return new AwdApi((new ApiClient()).setLWAAuthorizationSigner(lwaAuthorizationSigner).setBasePath(this.endpoint).setRateLimiter(this.rateLimitConfiguration));
+            }
+        }
+    }
+
 }
