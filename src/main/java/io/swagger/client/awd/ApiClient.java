@@ -14,6 +14,7 @@
 package io.swagger.client.awd;
 
 import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
+import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RateLimitConfiguration;
 import com.google.common.util.concurrent.RateLimiter;
 import com.squareup.okhttp.*;
@@ -73,8 +74,8 @@ public class ApiClient {
     private boolean verifyingSsl;
     private KeyManager[] keyManagers;
 
-    private OkHttpClient httpClient;
-    private JSON json;
+    private OkHttpClient httpClient = new OkHttpClient();
+    private JSON json = new JSON();
 
     private HttpLoggingInterceptor loggingInterceptor;
     private LWAAuthorizationSigner lwaAuthorizationSigner;
@@ -85,20 +86,9 @@ public class ApiClient {
      * Constructor for ApiClient
      */
     public ApiClient() {
-        httpClient = new OkHttpClient();
-
-
-        verifyingSsl = true;
-
-        json = new JSON();
-
-        // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/3.0/java");
-
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications = new HashMap<String, Authentication>();
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
+        this.setUserAgent("Swagger-Codegen/2.0/java");
+        this.authentications = new HashMap();
+        this.authentications = Collections.unmodifiableMap(this.authentications);
     }
 
     /**
@@ -337,13 +327,18 @@ public class ApiClient {
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof OAuth) {
-                ((OAuth) auth).setAccessToken(accessToken);
-                return;
+        Iterator var2 = this.authentications.values().iterator();
+
+        Authentication auth;
+        do {
+            if (!var2.hasNext()) {
+                throw new RuntimeException("No OAuth2 authentication configured!");
             }
-        }
-        throw new RuntimeException("No OAuth2 authentication configured!");
+
+            auth = (Authentication)var2.next();
+        } while(!(auth instanceof OAuth));
+
+        ((OAuth)auth).setAccessToken(accessToken);
     }
 
     /**
@@ -949,7 +944,7 @@ public class ApiClient {
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, formParams, authNames, progressRequestListener);
 
         return httpClient.newCall(request);
@@ -970,7 +965,7 @@ public class ApiClient {
      * @return The HTTP request
      * @throws ApiException If fail to serialize the request body object
      */
-    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         updateParamsForAuth(authNames, queryParams, headerParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
@@ -1010,7 +1005,7 @@ public class ApiClient {
         } else {
             request = reqBuilder.method(method, reqBody).build();
         }
-
+        request = this.lwaAuthorizationSigner.sign(request);
         return request;
     }
 

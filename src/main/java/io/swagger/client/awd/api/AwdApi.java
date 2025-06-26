@@ -80,7 +80,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call cancelInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call cancelInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -126,7 +126,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call cancelInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call cancelInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -145,7 +145,7 @@ public class AwdApi {
      * @param orderId The ID of the inbound order you want to cancel. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void cancelInbound(String orderId) throws ApiException {
+    public void cancelInbound(String orderId) throws ApiException, LWAException {
         cancelInboundWithHttpInfo(orderId);
     }
 
@@ -156,7 +156,7 @@ public class AwdApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> cancelInboundWithHttpInfo(String orderId) throws ApiException {
+    public ApiResponse<Void> cancelInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = cancelInboundValidateBeforeCall(orderId, null, null);
         return apiClient.execute(call);
     }
@@ -169,7 +169,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call cancelInboundAsync(String orderId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call cancelInboundAsync(String orderId, final ApiCallback<Void> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -202,7 +202,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call checkInboundEligibilityCall(InboundPackages body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call checkInboundEligibilityCall(InboundPackages body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -247,7 +247,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call checkInboundEligibilityValidateBeforeCall(InboundPackages body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call checkInboundEligibilityValidateBeforeCall(InboundPackages body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -267,7 +267,7 @@ public class AwdApi {
      * @return InboundEligibility
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InboundEligibility checkInboundEligibility(InboundPackages body) throws ApiException {
+    public InboundEligibility checkInboundEligibility(InboundPackages body) throws ApiException, LWAException {
         ApiResponse<InboundEligibility> resp = checkInboundEligibilityWithHttpInfo(body);
         return resp.getData();
     }
@@ -279,7 +279,7 @@ public class AwdApi {
      * @return ApiResponse&lt;InboundEligibility&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InboundEligibility> checkInboundEligibilityWithHttpInfo(InboundPackages body) throws ApiException {
+    public ApiResponse<InboundEligibility> checkInboundEligibilityWithHttpInfo(InboundPackages body) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = checkInboundEligibilityValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<InboundEligibility>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -293,7 +293,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call checkInboundEligibilityAsync(InboundPackages body, final ApiCallback<InboundEligibility> callback) throws ApiException {
+    public com.squareup.okhttp.Call checkInboundEligibilityAsync(InboundPackages body, final ApiCallback<InboundEligibility> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -327,7 +327,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call confirmInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call confirmInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -373,7 +373,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call confirmInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call confirmInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -392,7 +392,7 @@ public class AwdApi {
      * @param orderId The ID of the inbound order that you want to confirm. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void confirmInbound(String orderId) throws ApiException {
+    public void confirmInbound(String orderId) throws ApiException, LWAException {
         confirmInboundWithHttpInfo(orderId);
     }
 
@@ -403,7 +403,7 @@ public class AwdApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> confirmInboundWithHttpInfo(String orderId) throws ApiException {
+    public ApiResponse<Void> confirmInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = confirmInboundValidateBeforeCall(orderId, null, null);
         return apiClient.execute(call);
     }
@@ -416,7 +416,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call confirmInboundAsync(String orderId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call confirmInboundAsync(String orderId, final ApiCallback<Void> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -449,7 +449,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createInboundCall(InboundOrderCreationData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call createInboundCall(InboundOrderCreationData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -494,7 +494,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createInboundValidateBeforeCall(InboundOrderCreationData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createInboundValidateBeforeCall(InboundOrderCreationData body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -514,7 +514,7 @@ public class AwdApi {
      * @return InboundOrderReference
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InboundOrderReference createInbound(InboundOrderCreationData body) throws ApiException {
+    public InboundOrderReference createInbound(InboundOrderCreationData body) throws ApiException, LWAException {
         ApiResponse<InboundOrderReference> resp = createInboundWithHttpInfo(body);
         return resp.getData();
     }
@@ -526,7 +526,7 @@ public class AwdApi {
      * @return ApiResponse&lt;InboundOrderReference&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InboundOrderReference> createInboundWithHttpInfo(InboundOrderCreationData body) throws ApiException {
+    public ApiResponse<InboundOrderReference> createInboundWithHttpInfo(InboundOrderCreationData body) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = createInboundValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<InboundOrderReference>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -540,7 +540,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createInboundAsync(InboundOrderCreationData body, final ApiCallback<InboundOrderReference> callback) throws ApiException {
+    public com.squareup.okhttp.Call createInboundAsync(InboundOrderCreationData body, final ApiCallback<InboundOrderReference> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -574,7 +574,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getInboundCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -620,7 +620,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getInboundValidateBeforeCall(String orderId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -640,7 +640,7 @@ public class AwdApi {
      * @return InboundOrder
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InboundOrder getInbound(String orderId) throws ApiException {
+    public InboundOrder getInbound(String orderId) throws ApiException, LWAException {
         ApiResponse<InboundOrder> resp = getInboundWithHttpInfo(orderId);
         return resp.getData();
     }
@@ -652,7 +652,7 @@ public class AwdApi {
      * @return ApiResponse&lt;InboundOrder&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InboundOrder> getInboundWithHttpInfo(String orderId) throws ApiException {
+    public ApiResponse<InboundOrder> getInboundWithHttpInfo(String orderId) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = getInboundValidateBeforeCall(orderId, null, null);
         Type localVarReturnType = new TypeToken<InboundOrder>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -666,7 +666,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getInboundAsync(String orderId, final ApiCallback<InboundOrder> callback) throws ApiException {
+    public com.squareup.okhttp.Call getInboundAsync(String orderId, final ApiCallback<InboundOrder> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -701,7 +701,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getInboundShipmentCall(String shipmentId, String skuQuantities, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getInboundShipmentCall(String shipmentId, String skuQuantities, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -749,7 +749,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getInboundShipmentValidateBeforeCall(String shipmentId, String skuQuantities, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getInboundShipmentValidateBeforeCall(String shipmentId, String skuQuantities, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
@@ -770,7 +770,7 @@ public class AwdApi {
      * @return InboundShipment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InboundShipment getInboundShipment(String shipmentId, String skuQuantities) throws ApiException {
+    public InboundShipment getInboundShipment(String shipmentId, String skuQuantities) throws ApiException, LWAException {
         ApiResponse<InboundShipment> resp = getInboundShipmentWithHttpInfo(shipmentId, skuQuantities);
         return resp.getData();
     }
@@ -783,7 +783,7 @@ public class AwdApi {
      * @return ApiResponse&lt;InboundShipment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InboundShipment> getInboundShipmentWithHttpInfo(String shipmentId, String skuQuantities) throws ApiException {
+    public ApiResponse<InboundShipment> getInboundShipmentWithHttpInfo(String shipmentId, String skuQuantities) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = getInboundShipmentValidateBeforeCall(shipmentId, skuQuantities, null, null);
         Type localVarReturnType = new TypeToken<InboundShipment>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -798,7 +798,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getInboundShipmentAsync(String shipmentId, String skuQuantities, final ApiCallback<InboundShipment> callback) throws ApiException {
+    public com.squareup.okhttp.Call getInboundShipmentAsync(String shipmentId, String skuQuantities, final ApiCallback<InboundShipment> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -834,7 +834,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getInboundShipmentLabelsCall(String shipmentId, String pageType, String formatType, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getInboundShipmentLabelsCall(String shipmentId, String pageType, String formatType, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -884,7 +884,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getInboundShipmentLabelsValidateBeforeCall(String shipmentId, String pageType, String formatType, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getInboundShipmentLabelsValidateBeforeCall(String shipmentId, String pageType, String formatType, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
@@ -906,7 +906,7 @@ public class AwdApi {
      * @return ShipmentLabels
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ShipmentLabels getInboundShipmentLabels(String shipmentId, String pageType, String formatType) throws ApiException {
+    public ShipmentLabels getInboundShipmentLabels(String shipmentId, String pageType, String formatType) throws ApiException, LWAException {
         ApiResponse<ShipmentLabels> resp = getInboundShipmentLabelsWithHttpInfo(shipmentId, pageType, formatType);
         return resp.getData();
     }
@@ -920,7 +920,7 @@ public class AwdApi {
      * @return ApiResponse&lt;ShipmentLabels&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ShipmentLabels> getInboundShipmentLabelsWithHttpInfo(String shipmentId, String pageType, String formatType) throws ApiException {
+    public ApiResponse<ShipmentLabels> getInboundShipmentLabelsWithHttpInfo(String shipmentId, String pageType, String formatType) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = getInboundShipmentLabelsValidateBeforeCall(shipmentId, pageType, formatType, null, null);
         Type localVarReturnType = new TypeToken<ShipmentLabels>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -936,7 +936,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getInboundShipmentLabelsAsync(String shipmentId, String pageType, String formatType, final ApiCallback<ShipmentLabels> callback) throws ApiException {
+    public com.squareup.okhttp.Call getInboundShipmentLabelsAsync(String shipmentId, String pageType, String formatType, final ApiCallback<ShipmentLabels> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -976,7 +976,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listInboundShipmentsCall(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listInboundShipmentsCall(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1035,7 +1035,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listInboundShipmentsValidateBeforeCall(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listInboundShipmentsValidateBeforeCall(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
 
         com.squareup.okhttp.Call call = listInboundShipmentsCall(sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, progressListener, progressRequestListener);
@@ -1056,7 +1056,7 @@ public class AwdApi {
      * @return ShipmentListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ShipmentListing listInboundShipments(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken) throws ApiException {
+    public ShipmentListing listInboundShipments(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken) throws ApiException, LWAException {
         ApiResponse<ShipmentListing> resp = listInboundShipmentsWithHttpInfo(sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken);
         return resp.getData();
     }
@@ -1074,7 +1074,7 @@ public class AwdApi {
      * @return ApiResponse&lt;ShipmentListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ShipmentListing> listInboundShipmentsWithHttpInfo(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken) throws ApiException {
+    public ApiResponse<ShipmentListing> listInboundShipmentsWithHttpInfo(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = listInboundShipmentsValidateBeforeCall(sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken, null, null);
         Type localVarReturnType = new TypeToken<ShipmentListing>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1094,7 +1094,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listInboundShipmentsAsync(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ApiCallback<ShipmentListing> callback) throws ApiException {
+    public com.squareup.okhttp.Call listInboundShipmentsAsync(String sortBy, String sortOrder, String shipmentStatus, OffsetDateTime updatedAfter, OffsetDateTime updatedBefore, Integer maxResults, String nextToken, final ApiCallback<ShipmentListing> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1132,7 +1132,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listInventoryCall(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call listInventoryCall(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1187,7 +1187,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listInventoryValidateBeforeCall(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listInventoryValidateBeforeCall(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
 
         com.squareup.okhttp.Call call = listInventoryCall(sku, sortOrder, details, nextToken, maxResults, progressListener, progressRequestListener);
@@ -1206,7 +1206,7 @@ public class AwdApi {
      * @return InventoryListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InventoryListing listInventory(String sku, String sortOrder, String details, String nextToken, Integer maxResults) throws ApiException {
+    public InventoryListing listInventory(String sku, String sortOrder, String details, String nextToken, Integer maxResults) throws ApiException, LWAException {
         ApiResponse<InventoryListing> resp = listInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults);
         return resp.getData();
     }
@@ -1222,7 +1222,7 @@ public class AwdApi {
      * @return ApiResponse&lt;InventoryListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InventoryListing> listInventoryWithHttpInfo(String sku, String sortOrder, String details, String nextToken, Integer maxResults) throws ApiException {
+    public ApiResponse<InventoryListing> listInventoryWithHttpInfo(String sku, String sortOrder, String details, String nextToken, Integer maxResults) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = listInventoryValidateBeforeCall(sku, sortOrder, details, nextToken, maxResults, null, null);
         Type localVarReturnType = new TypeToken<InventoryListing>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1240,7 +1240,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listInventoryAsync(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ApiCallback<InventoryListing> callback) throws ApiException {
+    public com.squareup.okhttp.Call listInventoryAsync(String sku, String sortOrder, String details, String nextToken, Integer maxResults, final ApiCallback<InventoryListing> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1275,7 +1275,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call updateInboundCall(String orderId, InboundOrder body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call updateInboundCall(String orderId, InboundOrder body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -1321,7 +1321,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateInboundValidateBeforeCall(String orderId, InboundOrder body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInboundValidateBeforeCall(String orderId, InboundOrder body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -1346,7 +1346,7 @@ public class AwdApi {
      * @param body Represents an AWD inbound order. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateInbound(String orderId, InboundOrder body) throws ApiException {
+    public void updateInbound(String orderId, InboundOrder body) throws ApiException, LWAException {
         updateInboundWithHttpInfo(orderId, body);
     }
 
@@ -1358,7 +1358,7 @@ public class AwdApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateInboundWithHttpInfo(String orderId, InboundOrder body) throws ApiException {
+    public ApiResponse<Void> updateInboundWithHttpInfo(String orderId, InboundOrder body) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = updateInboundValidateBeforeCall(orderId, body, null, null);
         return apiClient.execute(call);
     }
@@ -1372,7 +1372,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateInboundAsync(String orderId, InboundOrder body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateInboundAsync(String orderId, InboundOrder body, final ApiCallback<Void> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1406,7 +1406,7 @@ public class AwdApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call updateInboundShipmentTransportDetailsCall(String shipmentId, TransportationDetails body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call updateInboundShipmentTransportDetailsCall(String shipmentId, TransportationDetails body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -1452,7 +1452,7 @@ public class AwdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateInboundShipmentTransportDetailsValidateBeforeCall(String shipmentId, TransportationDetails body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateInboundShipmentTransportDetailsValidateBeforeCall(String shipmentId, TransportationDetails body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException, LWAException {
         
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
@@ -1477,7 +1477,7 @@ public class AwdApi {
      * @param body Transportation details for the shipment. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateInboundShipmentTransportDetails(String shipmentId, TransportationDetails body) throws ApiException {
+    public void updateInboundShipmentTransportDetails(String shipmentId, TransportationDetails body) throws ApiException, LWAException {
         updateInboundShipmentTransportDetailsWithHttpInfo(shipmentId, body);
     }
 
@@ -1489,7 +1489,7 @@ public class AwdApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateInboundShipmentTransportDetailsWithHttpInfo(String shipmentId, TransportationDetails body) throws ApiException {
+    public ApiResponse<Void> updateInboundShipmentTransportDetailsWithHttpInfo(String shipmentId, TransportationDetails body) throws ApiException, LWAException {
         com.squareup.okhttp.Call call = updateInboundShipmentTransportDetailsValidateBeforeCall(shipmentId, body, null, null);
         return apiClient.execute(call);
     }
@@ -1503,7 +1503,7 @@ public class AwdApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateInboundShipmentTransportDetailsAsync(String shipmentId, TransportationDetails body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateInboundShipmentTransportDetailsAsync(String shipmentId, TransportationDetails body, final ApiCallback<Void> callback) throws ApiException, LWAException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
